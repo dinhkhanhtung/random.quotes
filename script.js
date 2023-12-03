@@ -1,83 +1,60 @@
-// Your JavaScript code from the original file
-// Make sure to include any other JavaScript code you have
-const text = document.querySelector(&quot;.quote&quot;);
-			const author = document.getElementById(&quot;author&quot;);
-			const tweetButton = document.querySelector(&quot;#twitter&quot;);
-			const facebookButton = document.querySelector(&quot;#facebook&quot;);
-			const darkModeSwitch = document.querySelector(&quot;#toggle-dark-mode&quot;);
+// Hàm xử lý hiển thị các citations
+function showQuote(quote) {
+  const quoteElement = document.getElementById('quote');
+  quoteElement.innerHTML = quote;
+  quoteElement.style.maxHeight = '0';
+  quoteElement.style.overflow = 'hidden';
+  quoteElement.style.transition = 'max-height 0.3s ease';
 
-			const getNewQuote = async () =&gt; {
-			//api for quotes
-			var url =
-			&quot;https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json&quot;;
+  setTimeout(() => {
+    quoteElement.style.maxHeight = '100vh';
+    quoteElement.style.overflow = 'visible';
+  }, 300);
+}
 
-			// fetch the data from api
-			const response = await fetch(url);
+// Hàm xử lý sự kiện click vào các nút chọn
+function openModal(quote) {
+  const modalElement = document.getElementById('modal');
+  modalElement.style.display = 'block';
+  showQuote(quote);
+}
 
-			//convert response to json and store it in quotes array
-			const allQuotes = await response.json();
+// Hàm đóng góng các citations khi mở rộng màn hình
+window.addEventListener('resize', () => {
+  const quotes = document.querySelectorAll('.quote');
+  quotes.forEach((quote) => {
+    const quoteElement = document.getElementById(quote.dataset.id);
+    quoteElement.style.maxHeight = '0';
+    quoteElement.style.overflow = 'hidden';
+    quoteElement.style.transition = 'max-height 0.3s ease';
 
-			// Generates a random number between 0 and the length of the quotes array
-			const indx = Math.floor(Math.random() * allQuotes.length);
+    setTimeout(() => {
+      quoteElement.style.maxHeight = '100vh';
+      quoteElement.style.overflow = 'visible';
+    }, 300);
+  });
+});
 
-			//Store the quote present at the randomly generated index
-			const quote = allQuotes[indx].text;
+// Hàm đóng góng các citations khi đóng góng màn hình
+window.addEventListener('load', () => {
+  const quotes = document.querySelectorAll('.quote');
+  quotes.forEach((quote) => {
+    openModal(quote);
+  });
+});
 
-			//Store the author of the respective quote
-			const auth = allQuotes[indx].author;
-
-			if (auth == null) {
-			author.innerHTML = &quot;Anonymous&quot;;
-			} else {
-			author.innerHTML = &quot;~ &quot; + auth;
-			}
-
-			//function to dynamically display the quote and the author
-			text.innerHTML = quote;
-
-			//tweet the quote
-			tweetButton.href = &quot;https://twitter.com/intent/tweet?text=&quot; +
-			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
-			encodeURIComponent(author.innerHTML);
-
-			// share on Facebook
-			facebookButton.href = &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
-			encodeURIComponent(window.location.href);
-			};
-
-			document.getElementById(&quot;new-quote&quot;).addEventListener(&quot;click&quot;,
-			getNewQuote);
-
-			tweetButton.addEventListener(&quot;click&quot;, () =&gt; {
-			window.open( &quot;https://twitter.com/intent/tweet?text=&quot; +
-			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
-			encodeURIComponent(author.innerHTML),
-			&quot;_blank&quot;
-			);
-			});
-
-			facebookButton.addEventListener(&quot;click&quot;, () =&gt; {
-			window.open( &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
-			encodeURIComponent(window.location.href),
-			&quot;_blank&quot;
-			);
-			});
-
-			darkModeSwitch.addEventListener(&quot;change&quot;, () =&gt; {
-			document.documentElement.classList.toggle(&quot;dark-mode&quot;,
-			darkModeSwitch.checked);
-			});
-
-			const speechButton = document.getElementById(&#39;speech&#39;);
-			speechButton.addEventListener(&#39;click&#39;, () =&gt; {
-			// Add code for handling the speech button click event (if needed)
-			alert(&#39;Speech button clicked!&#39;);
-			});
-
-			const copyButton = document.getElementById(&#39;copy&#39;);
-			copyButton.addEventListener(&#39;click&#39;, () =&gt; {
-			// Add code for handling the copy button click event (if needed)
-			alert(&#39;Copy button clicked!&#39;);
-			});
-
-			getNewQuote();
+// Hàm đóng góng các citations khi mở rộng màn hình
+// window.addEventListener('resize', () => {
+//   const quotes = document.querySelectorAll('.quote');
+//   quotes.forEach((quote) => {
+//     const quoteElement = document.getElementById(quote.dataset.id);
+//     quoteElement.style.maxHeight = '0';
+//     quoteElement.style.overflow = 'hidden';
+//     quoteElement.style.transition = 'max-height 0.3s ease';
+//
+//     setTimeout(() => {
+//       quoteElement.style.maxHeight = '100vh';
+//       quoteElement.style.overflow = 'visible';
+//     }, 300);
+//   });
+// });
