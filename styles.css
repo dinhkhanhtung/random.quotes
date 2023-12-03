@@ -430,3 +430,69 @@ rel: noopener noreferrer;
     content: none !important; /* Loại bỏ nội dung của ::before */
     filter: none !important; /* Loại bỏ hiệu ứng mờ */
 }
+/* Add other existing styles as needed */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.buttons .features {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.features ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.features ul li {
+    height: 47px;
+    width: 47px;
+    display: flex;
+    cursor: pointer;
+    color: #5372f0;
+    list-style: none;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #5372f0;
+    transition: all 0.3s ease;
+}
+
+.features ul li:hover,
+.features ul li.active {
+    color: #fff;
+    background: #5372f0;
+}
+
+ul .speech.active {
+    pointer-events: none;
+}
+
+.buttons button {
+    border: none;
+    color: #fff;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 13px 22px;
+    border-radius: 30px;
+    background: #5372f0;
+    transition: background 0.3s ease;
+}
+
+.buttons button.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Add your existing styles and adjustments here */
