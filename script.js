@@ -40,9 +40,6 @@ document.getElementById("new-quote").addEventListener("click", getNewQuote);
 
 // Gọi hàm lấy trích dẫn mới khi tải trang
 window.onload = function() {
-    const text = document.querySelector(".quote");
-    const author = document.getElementById("author");
     text.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
     author.innerHTML = "~ Đinh Khánh Tùng";
-    getNewQuote();
 };
