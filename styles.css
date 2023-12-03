@@ -190,8 +190,8 @@ ul .speech.active {
     }
 
     .avatar {
-        width: 100px; /* Giảm kích thước ảnh trên thiết bị di động */
-        height: 100px; /* Giảm kích thước ảnh trên thiết bị di động */
+        width: 80px; /* Giảm kích thước ảnh trên thiết bị di động */
+        height: 80px; /* Giảm kích thước ảnh trên thiết bị di động */
     }
 
     .quote-area {
@@ -211,14 +211,14 @@ ul .speech.active {
     }
 
     .buttons .features ul li {
-        height: 50px; /* Tăng kích thước nút chức năng */
-        width: 50px; /* Tăng kích thước nút chức năng */
-        margin: 0 10px;
+        height: 40px; /* Giảm kích thước nút chức năng */
+        width: 40px; /* Giảm kích thước nút chức năng */
+        margin: 0 5px; /* Giảm khoảng cách giữa các nút */
     }
 
     .buttons button {
-        font-size: 18px; /* Kích thước chữ giống tiêu đề */
-        padding: 15px 25px; /* Tăng padding cho nút để dễ bấm hơn */
+        font-size: 16px; /* Giảm kích thước chữ cho nút */
+        padding: 10px 20px; /* Giảm padding cho nút */
     }
 
     .buttons .features {
