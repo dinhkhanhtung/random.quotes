@@ -1,45 +1,118 @@
-// Lấy các phần tử từ DOM
-const text = document.querySelector(".quote");
-const author = document.getElementById("author");
-const tweetButton = document.querySelector("#twitter");
-const facebookButton = document.querySelector("#facebook");
+// Lấy các phần tử từ HTML
+var copyButton = document.getElementById('copy');
+var speechButton = document.getElementById('speech');
+var favoriteButton = document.getElementById('favorite');
+var downloadButton = document.getElementById('download-image');
+var tweetButton = document.getElementById('twitter');
+var facebookButton = document.getElementById('facebook');
+var quoteText = document.querySelector(".quote");
+var authorText = document.getElementById("author");
+var newQuoteButton = document.getElementById('new-quote');
 
-// Hàm lấy trích dẫn mới từ API
+// Hàm lấy trích dẫn mới
 const getNewQuote = async () => {
-    const url = "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
+    //api for quotes
+    var url = "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
+
+    // fetch the data from api
     const response = await fetch(url);
+
+    //convert response to json and store it in quotes array
     const allQuotes = await response.json();
+
+    // Generates a random number between 0 and the length of the quotes array
     const indx = Math.floor(Math.random() * allQuotes.length);
+
+    //Store the quote present at the randomly generated index
     const quote = allQuotes[indx].text;
+
+    //Store the author of the respective quote
     const auth = allQuotes[indx].author;
 
-    text.innerHTML = quote;
-    author.innerHTML = auth ? "~ " + auth : "Anonymous";
+    if (auth == null) {
+        authorText.innerHTML = "Anonymous";
+    } else {
+        authorText.innerHTML = "~ " + auth;
+    }
 
-    // Cập nhật liên kết chia sẻ trên Twitter và Facebook
-    tweetButton.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text.innerHTML)} ~ ${encodeURIComponent(author.innerHTML)}`;
-    facebookButton.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    //function to dynamically display the quote and the author
+    quoteText.innerHTML = quote;
+
+    //tweet the quote
+    tweetButton.href = "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(quoteText.textContent) + " ~ " +
+        encodeURIComponent(authorText.textContent);
+
+    // share on Facebook
+    facebookButton.href = "https://www.facebook.com/sharer/sharer.php?u=" +
+        encodeURIComponent(window.location.href);
+
+    // Đặt lại màu của nút yêu thích
+    favoriteButton.style.color = "";
 };
 
-// Sự kiện click cho nút "Trích dẫn Mới"
-document.getElementById("new-quote").addEventListener("click", getNewQuote);
-
-// Sự kiện click cho nút chia sẻ trên Twitter và Facebook
-[tweetButton, facebookButton].forEach(button => {
-    button.addEventListener("click", () => {
-        window.open(button.href, "_blank");
-    });
+// Thêm sự kiện cho nút copy
+copyButton.addEventListener('click', function() {
+    var textArea = document.createElement("textarea");
+    textArea.value = quoteText.textContent + ' - ' + authorText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+    alert("Trích dẫn đã được sao chép!");
 });
 
-// Sự kiện click cho các nút khác (nếu cần)
-["speech", "copy"].forEach(id => {
-    document.getElementById(id).addEventListener("click", () => {
-        alert(`${id.charAt(0).toUpperCase() + id.slice(1)} button clicked!`);
-    });
+// Thêm sự kiện cho nút nghe
+speechButton.addEventListener('click', function() {
+    var speech = new SpeechSynthesisUtterance();
+    speech.lang = "vi-VN";
+    speech.text = quoteText.textContent;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
 });
 
-// Gọi hàm lấy trích dẫn mới khi tải trang
-window.onload = function() {
-    text.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
-    author.innerHTML = "~ Đinh Khánh Tùng";
-};
+// Thêm sự kiện cho nút yêu thích
+favoriteButton.addEventListener('click', function() {
+    // Lưu trích dẫn yêu thích vào localStorage hoặc thực hiện hành động khác
+    var favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+    var quote = quoteText.textContent;
+    var author = authorText.textContent;
+    favoriteQuotes.push({quote, author});
+    localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
+    favoriteButton.style.color = "red";
+});
+
+// Thêm sự kiện cho nút tải xuống
+downloadButton.addEventListener('click', function() {
+    // Tải xuống trích dẫn hoặc thực hiện hành động khác
+    var element = document.createElement('a');
+    var quote = quoteText.textContent;
+    var author = authorText.textContent;
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(quote + ' - ' + author));
+    element.setAttribute('download', 'quote.txt');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+});
+
+// Thêm sự kiện cho nút chia sẻ trên Twitter
+tweetButton.addEventListener('click', function() {
+    var tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(quoteText.textContent + ' - ' + authorText.textContent);
+    window.open(tweetUrl, '_blank');
+});
+
+// Thêm sự kiện cho nút chia sẻ trên Facebook
+facebookButton.addEventListener('click', function() {
+    var facebookUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(document.URL);
+    window.open(facebookUrl, '_blank');
+});
+
+// Thêm sự kiện cho nút "Trích dẫn mới"
+newQuoteButton.addEventListener('click', getNewQuote);
+
+// Hiển thị thông điệp ban đầu
+quoteText.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
+authorText.innerHTML = "~ Đinh Khánh Tùng";
