@@ -1,60 +1,92 @@
-// Hàm xử lý hiển thị các citations
-function showQuote(quote) {
-  const quoteElement = document.getElementById('quote');
-  quoteElement.innerHTML = quote;
-  quoteElement.style.maxHeight = '0';
-  quoteElement.style.overflow = 'hidden';
-  quoteElement.style.transition = 'max-height 0.3s ease';
+document.addEventListener("DOMContentLoaded", () => {
+    const text = document.querySelector(".quote");
+    const author = document.getElementById("author");
+    const tweetButton = document.querySelector("#twitter");
+    const facebookButton = document.querySelector("#facebook");
+    const darkModeSwitch = document.querySelector("#toggle-dark-mode");
 
-  setTimeout(() => {
-    quoteElement.style.maxHeight = '100vh';
-    quoteElement.style.overflow = 'visible';
-  }, 300);
-}
+    const getNewQuote = async () => {
+        // API for quotes
+        const url =
+            "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
 
-// Hàm xử lý sự kiện click vào các nút chọn
-function openModal(quote) {
-  const modalElement = document.getElementById('modal');
-  modalElement.style.display = 'block';
-  showQuote(quote);
-}
+        // Fetch the data from the API
+        try {
+            const response = await fetch(url);
+            const allQuotes = await response.json();
 
-// Hàm đóng góng các citations khi mở rộng màn hình
-window.addEventListener('resize', () => {
-  const quotes = document.querySelectorAll('.quote');
-  quotes.forEach((quote) => {
-    const quoteElement = document.getElementById(quote.dataset.id);
-    quoteElement.style.maxHeight = '0';
-    quoteElement.style.overflow = 'hidden';
-    quoteElement.style.transition = 'max-height 0.3s ease';
+            // Generates a random number between 0 and the length of the quotes array
+            const indx = Math.floor(Math.random() * allQuotes.length);
 
-    setTimeout(() => {
-      quoteElement.style.maxHeight = '100vh';
-      quoteElement.style.overflow = 'visible';
-    }, 300);
-  });
+            // Store the quote present at the randomly generated index
+            const quote = allQuotes[indx].text;
+
+            // Store the author of the respective quote
+            const auth = allQuotes[indx].author;
+
+            if (auth == null) {
+                author.innerHTML = "Anonymous";
+            } else {
+                author.innerHTML = "~ " + auth;
+            }
+
+            // Function to dynamically display the quote and the author
+            text.innerHTML = quote;
+
+            // Tweet the quote
+            tweetButton.href =
+                "https://twitter.com/intent/tweet?text=" +
+                encodeURIComponent(text.innerHTML) +
+                " ~ " +
+                encodeURIComponent(author.innerHTML);
+
+            // Share on Facebook
+            facebookButton.href =
+                "https://www.facebook.com/sharer/sharer.php?u=" +
+                encodeURIComponent(window.location.href);
+        } catch (error) {
+            console.error("Error fetching new quote:", error);
+        }
+    };
+
+    document.getElementById("new-quote").addEventListener("click", getNewQuote);
+
+    tweetButton.addEventListener("click", () => {
+        window.open(
+            "https://twitter.com/intent/tweet?text=" +
+                encodeURIComponent(text.innerHTML) +
+                " ~ " +
+                encodeURIComponent(author.innerHTML),
+            "_blank"
+        );
+    });
+
+    facebookButton.addEventListener("click", () => {
+        window.open(
+            "https://www.facebook.com/sharer/sharer.php?u=" +
+                encodeURIComponent(window.location.href),
+            "_blank"
+        );
+    });
+
+    darkModeSwitch.addEventListener("change", () => {
+        document.documentElement.classList.toggle(
+            "dark-mode",
+            darkModeSwitch.checked
+        );
+    });
+
+    const speechButton = document.getElementById("speech");
+    speechButton.addEventListener("click", () => {
+        // Add code for handling the speech button click event (if needed)
+        alert("Speech button clicked!");
+    });
+
+    const copyButton = document.getElementById("copy");
+    copyButton.addEventListener("click", () => {
+        // Add code for handling the copy button click event (if needed)
+        alert("Copy button clicked!");
+    });
+
+    getNewQuote();
 });
-
-// Hàm đóng góng các citations khi đóng góng màn hình
-window.addEventListener('load', () => {
-  const quotes = document.querySelectorAll('.quote');
-  quotes.forEach((quote) => {
-    openModal(quote);
-  });
-});
-
-// Hàm đóng góng các citations khi mở rộng màn hình
-// window.addEventListener('resize', () => {
-//   const quotes = document.querySelectorAll('.quote');
-//   quotes.forEach((quote) => {
-//     const quoteElement = document.getElementById(quote.dataset.id);
-//     quoteElement.style.maxHeight = '0';
-//     quoteElement.style.overflow = 'hidden';
-//     quoteElement.style.transition = 'max-height 0.3s ease';
-//
-//     setTimeout(() => {
-//       quoteElement.style.maxHeight = '100vh';
-//       quoteElement.style.overflow = 'visible';
-//     }, 300);
-//   });
-// });
