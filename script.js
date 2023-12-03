@@ -1,24 +1,78 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const quoteText = document.getElementById("quote-text");
-    const authorText = document.getElementById("author-text");
-    const newQuoteBtn = document.getElementById("new-quote");
+const text = document.querySelector(".quote");
+const author = document.getElementById("author");
+const tweetButton = document.querySelector("#twitter");
+const facebookButton = document.querySelector("#facebook");
+const darkModeSwitch = document.querySelector("#toggle-dark-mode");
 
-    // Hàm lấy một trích dẫn ngẫu nhiên (hãy đảm bảo bạn đã triển khai nó)
-    function getRandomQuote() {
-        // Thay thế hàm này với logic lấy trích dẫn ngẫu nhiên của bạn
-        return { quote: "Sample Quote", author: "Author" };
+const getNewQuote = async () => {
+    // API endpoint for quotes
+    var url = "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
+
+    // Fetch the data from the API
+    const response = await fetch(url);
+
+    // Convert response to JSON and store it in the quotes array
+    const allQuotes = await response.json();
+
+    // Generates a random number between 0 and the length of the quotes array
+    const indx = Math.floor(Math.random() * allQuotes.length);
+
+    // Store the quote present at the randomly generated index
+    const quote = allQuotes[indx].text;
+
+    // Store the author of the respective quote
+    const auth = allQuotes[indx].author;
+
+    if (auth == null) {
+        author.innerHTML = "Anonymous";
+    } else {
+        author.innerHTML = "~ " + auth;
     }
 
-    // Hàm hiển thị trích dẫn mới
-    function displayQuote() {
-        const { quote, author } = getRandomQuote();
-        quoteText.textContent = quote;
-        authorText.textContent = `— ${author}`;
-    }
+    // Function to dynamically display the quote and the author
+    text.innerHTML = quote;
 
-    // Xử lý sự kiện click nút "Trích Dẫn Mới"
-    newQuoteBtn.addEventListener("click", displayQuote);
+    // Tweet the quote
+    tweetButton.href = "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(text.innerHTML) + " ~ " +
+        encodeURIComponent(author.innerHTML);
 
-    // Gọi hàm hiển thị trích dẫn lần đầu tiên khi trang được tải
-    displayQuote();
+    // Share on Facebook
+    facebookButton.href = "https://www.facebook.com/sharer/sharer.php?u=" +
+        encodeURIComponent(window.location.href);
+};
+
+document.getElementById("new-quote").addEventListener("click", getNewQuote);
+
+tweetButton.addEventListener("click", () => {
+    window.open("https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(text.innerHTML) + " ~ " +
+        encodeURIComponent(author.innerHTML),
+        "_blank"
+    );
 });
+
+facebookButton.addEventListener("click", () => {
+    window.open("https://www.facebook.com/sharer/sharer.php?u=" +
+        encodeURIComponent(window.location.href),
+        "_blank"
+    );
+});
+
+darkModeSwitch.addEventListener("change", () => {
+    document.documentElement.classList.toggle("dark-mode", darkModeSwitch.checked);
+});
+
+const speechButton = document.getElementById('speech');
+speechButton.addEventListener('click', () => {
+    // Add code for handling the speech button click event (if needed)
+    alert('Speech button clicked!');
+});
+
+const copyButton = document.getElementById('copy');
+copyButton.addEventListener('click', () => {
+    // Add code for handling the copy button click event (if needed)
+    alert('Copy button clicked!');
+});
+
+getNewQuote();
