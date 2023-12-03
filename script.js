@@ -1,46 +1,81 @@
-// Lấy các phần tử từ DOM
-const text = document.querySelector(".quote");
-const author = document.getElementById("author");
-const tweetButton = document.querySelector("#twitter");
-const facebookButton = document.querySelector("#facebook");
-const darkModeSwitch = document.querySelector("#toggle-dark-mode");
+const text = document.querySelector(&quot;.quote&quot;);
+			const author = document.getElementById(&quot;author&quot;);
+			const tweetButton = document.querySelector(&quot;#twitter&quot;);
+			const facebookButton = document.querySelector(&quot;#facebook&quot;);
+			const darkModeSwitch = document.querySelector(&quot;#toggle-dark-mode&quot;);
 
-// Hàm lấy trích dẫn mới từ API
-const getNewQuote = async () => {
-    const url = "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
-    const response = await fetch(url);
-    const allQuotes = await response.json();
-    const indx = Math.floor(Math.random() * allQuotes.length);
-    const quote = allQuotes[indx].text;
-    const auth = allQuotes[indx].author;
+			const getNewQuote = async () =&gt; {
+			//api for quotes
+			var url =
+			&quot;https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json&quot;;
 
-    text.innerHTML = quote;
-    author.innerHTML = auth ? "~ " + auth : "Anonymous";
+			// fetch the data from api
+			const response = await fetch(url);
 
-    // Cập nhật liên kết chia sẻ trên Twitter và Facebook
-    tweetButton.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text.innerHTML)} ~ ${encodeURIComponent(author.innerHTML)}`;
-    facebookButton.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-};
+			//convert response to json and store it in quotes array
+			const allQuotes = await response.json();
 
-// Sự kiện click cho nút "Trích dẫn Mới"
-document.getElementById("new-quote").addEventListener("click", getNewQuote);
+			// Generates a random number between 0 and the length of the quotes array
+			const indx = Math.floor(Math.random() * allQuotes.length);
 
-// Sự kiện click cho nút chia sẻ trên Twitter và Facebook
-[tweetButton, facebookButton].forEach(button => {
-    button.addEventListener("click", () => {
-        window.open(button.href, "_blank");
-    });
-});
+			//Store the quote present at the randomly generated index
+			const quote = allQuotes[indx].text;
 
-// Sự kiện click cho các nút khác (nếu cần)
-["speech", "copy"].forEach(id => {
-    document.getElementById(id).addEventListener("click", () => {
-        alert(`${id.charAt(0).toUpperCase() + id.slice(1)} button clicked!`);
-    });
-});
+			//Store the author of the respective quote
+			const auth = allQuotes[indx].author;
 
-// Gọi hàm lấy trích dẫn mới khi tải trang
-window.onload = function() {
-    text.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
-    author.innerHTML = "~ Đinh Khánh Tùng";
-};
+			if (auth == null) {
+			author.innerHTML = &quot;Anonymous&quot;;
+			} else {
+			author.innerHTML = &quot;~ &quot; + auth;
+			}
+
+			//function to dynamically display the quote and the author
+			text.innerHTML = quote;
+
+			//tweet the quote
+			tweetButton.href = &quot;https://twitter.com/intent/tweet?text=&quot; +
+			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
+			encodeURIComponent(author.innerHTML);
+
+			// share on Facebook
+			facebookButton.href = &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
+			encodeURIComponent(window.location.href);
+			};
+
+			document.getElementById(&quot;new-quote&quot;).addEventListener(&quot;click&quot;,
+			getNewQuote);
+
+			tweetButton.addEventListener(&quot;click&quot;, () =&gt; {
+			window.open( &quot;https://twitter.com/intent/tweet?text=&quot; +
+			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
+			encodeURIComponent(author.innerHTML),
+			&quot;_blank&quot;
+			);
+			});
+
+			facebookButton.addEventListener(&quot;click&quot;, () =&gt; {
+			window.open( &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
+			encodeURIComponent(window.location.href),
+			&quot;_blank&quot;
+			);
+			});
+
+			darkModeSwitch.addEventListener(&quot;change&quot;, () =&gt; {
+			document.documentElement.classList.toggle(&quot;dark-mode&quot;,
+			darkModeSwitch.checked);
+			});
+
+			const speechButton = document.getElementById(&#39;speech&#39;);
+			speechButton.addEventListener(&#39;click&#39;, () =&gt; {
+			// Add code for handling the speech button click event (if needed)
+			alert(&#39;Speech button clicked!&#39;);
+			});
+
+			const copyButton = document.getElementById(&#39;copy&#39;);
+			copyButton.addEventListener(&#39;click&#39;, () =&gt; {
+			// Add code for handling the copy button click event (if needed)
+			alert(&#39;Copy button clicked!&#39;);
+			});
+
+			getNewQuote();
