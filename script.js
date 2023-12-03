@@ -44,7 +44,7 @@ const getNewQuote = async () => {
     tweetButton.href = "https://twitter.com/intent/tweet?text=" +
         encodeURIComponent(quoteText.textContent) + " ~ " +
         encodeURIComponent(authorText.textContent);
-
+  
     // share on Facebook
     facebookButton.href = "https://www.facebook.com/sharer/sharer.php?u=" +
         encodeURIComponent(window.location.href);
@@ -122,7 +122,16 @@ facebookButton.addEventListener('click', function() {
 });
 
 // Thêm sự kiện cho nút "Trích dẫn mới"
-newQuoteButton.addEventListener('click', getNewQuote);
+newQuoteButton.addEventListener('click', function() {
+    // Dừng âm thanh nếu đang phát
+    if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+    }
+
+    // Lấy trích dẫn mới
+    getNewQuote();
+});
 
 // Hiển thị thông điệp ban đầu
 quoteText.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
