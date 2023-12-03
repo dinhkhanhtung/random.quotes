@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-    <title>Your Page Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Random Quote Generator</title>
 </head>
 <body>
     <div class="wrapper">
-        <header>Your Page Header</header>
+        <header>Random Quote Generator</header>
         <div class="content">
-            <div class="quote-area">
+            <div class="quote-area" id="quote-area">
                 <i class="fas fa-quote-left"></i>
-                <div class="quote" id="text"></div>
+                <div class="quote" id="quote-text">This is a sample quote.</div>
                 <i class="fas fa-quote-right"></i>
             </div>
-            <div class="author" id="author"></div>
+            <div class="author" id="author-text">— Author</div>
         </div>
         <div class="buttons">
             <div class="features">
@@ -31,9 +27,11 @@
                     <li class="download-image" id="download-image"><i class="fas fa-download"></i></li>
                     <li class="favorite" id="favorite"><i class="fas fa-heart"></i></li>
                 </ul>
-                <button id="new-quote">Trích Dẫn Mới</button>
             </div>
+            <button id="new-quote">Trích Dẫn Mới</button>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
