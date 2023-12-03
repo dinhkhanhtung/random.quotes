@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+    <head>
+        <meta charset='UTF-8'/>
+        <meta content='width=device-width, initial-scale=1' name='viewport'/>
+        <meta content='Tạo Ngẫu Nhiên Danh Ngôn | Đinh Khánh Tùng - Website chia sẻ những danh ngôn hay mỗi ngày.' name='description'/>
+        <meta content='danh ngôn, trích dẫn, Đinh Khánh Tùng, random quotes' name='keywords'/>
+        <meta content='Đinh Khánh Tùng' name='author'/>
+        <meta content='index, follow' name='robots'/>
+        <link href='https://example.com' rel='canonical'/>
+        <meta content='Tạo Ngẫu Nhiên Danh Ngôn | Đinh Khánh Tùng' property='og:title'/>
+        <meta content='Website chia sẻ những danh ngôn hay mỗi ngày.' property='og:description'/>
+        <meta content='https://example.com/your-image.jpg' property='og:image'/>
+        <meta content='https://example.com' property='og:url'/>
+        <meta content='website' property='og:type'/>
+        <meta content='summary_large_image' name='twitter:card'/>
+        <meta content='Tạo Ngẫu Nhiên Danh Ngôn | Đinh Khánh Tùng' name='twitter:title'/>
+        <meta content='Website chia sẻ những danh ngôn hay mỗi ngày.' name='twitter:description'/>
+        <meta content='https://example.com/your-image.jpg' name='twitter:image'/>
+        <meta content='@YourTwitterHandle' name='twitter:creator'/>
+        <link href='https://example.com' hreflang='x-default' rel='alternate'/>
+        <link href='https://en.example.com' hreflang='en' rel='alternate'/>
+        <link href='https://vi.example.com' hreflang='vi' rel='alternate'/>
+        <title>Tạo Ngẫu Nhiên Danh Ngôn | Đinh Khánh Tùng</title>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' rel='stylesheet'/>
+        <script src='https://html2canvas.hertzen.com/dist/html2canvas.min.js'/>
+        <!-- Your existing meta tags and styles go here -->
+        <b:skin><![CDATA[
+            
+			
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap")
+font-display: swap;
+
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+body {
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+padding: 0 10px;
+background: #f9f6f2;
+font-family: "Poppins", sans-serif;
+}
+
+
+.wrapper {
+max-width: 605px;
+width: 100%;
+background: #f8f3eb;
+border-radius: 15px;
+padding: 30px;
+box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+transition: box-shadow 0.3s ease;
+margin: 20px;
+}
+.wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh; /* Adjust as needed */
+}
+
+header {
+font-size: 26px;
+font-weight: 600;
+text-align: center;
+color: #202842;
+}
+
+
+.content {
+margin: 35px 0;
+}
+
+
+.quote-area {
+display: flex;
+justify-content: center;
+background: #f0ebdf;
+padding: 20px;
+border-radius: 10px;
+position: relative;
+text-align: center;
+}
+
+.quote-area i {
+font-size: 15px;
+color: #202842;
+}
+
+.quote-area i:first-child {
+margin: 3px 10px 0 0;
+}
+
+.quote-area i:last-child {
+display: flex;
+margin: 0 0 3px 10px;
+align-items: flex-end;
+}
+
+.quote-area .quote {
+font-size: 22px;
+word-break: break-word;
+white-space: pre-line;
+max-width: 100%;
+z-index: 1;
+}
+
+.quote-area::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+border: 1px solid #d3cbc3;
+border-radius: 10px;
+z-index: 0;
+transition: box-shadow 0.3s ease;
+}
+
+
+.quote-area:hover::before,
+.wrapper:hover {
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+.author {
+display: flex;
+font-size: 18px;
+margin-top: 20px;
+font-style: italic;
+justify-content: flex-end;
+color: #202842;
+}
+
+.author span:first-child {
+margin: -6px 5px 0 0;
+font-family: monospace;
+}
+
+
+.buttons {
+border-top: 1px solid #ccc;
+}
+
+.buttons .features {
+display: flex;
+margin-top: 20px;
+align-items: center;
+justify-content: space-between;
+}
+
+.features ul {
+display: flex;
+}
+
+.features ul li {
+margin: 0 10px;
+height: 47px;
+width: 47px;
+display: flex;
+cursor: pointer;
+color: #5372f0;
+list-style: none;
+border-radius: 50%;
+align-items: center;
+justify-content: center;
+border: 2px solid #5372f0;
+transition: all 0.3s ease;
+}
+
+.features ul li:first-child {
+margin-left: 0;
+}
+
+
+ul li:hover,
+ul li.active {
+color: #fff;
+background: #5372f0;
+}
+
+ul .speech.active {
+pointer-events: none;
+}
+
+
+.buttons button {
+border: none;
+color: #fff;
+outline: none;
+font-size: 16px;
+cursor: pointer;
+padding: 13px 22px;
+border-radius: 30px;
+background: #5372f0;
+transition: background 0.3s ease;
+}
+
+
+.buttons button.loading {
+opacity: 0.7;
+pointer-events: none;
+}
+
+
+.dark-mode .wrapper {
+background: #1a1a1a;
+color: #fff;
+}
+
+.dark-mode .quote-area {
+background: #2d2d2d;
+border: 1px solid #444;
+}
+
+.dark-mode .quote-area i {
+color: #fff;
+}
+
+.dark-mode .quote-area .quote {
+color: #fff;
+}
+
+@media (max-width: 768px) {
+.wrapper {
+padding: 20px;
+}
+
+.wrapper header {
+font-size: 24px;
+}
+
+.quote-area {
+padding: 15px;
+}
+
+.quote-area i {
+font-size: 12px;
+}
+
+.quote-area .quote {
+font-size: 18px;
+}
+
+.content .author {
+font-size: 14px;
+}
+
+.buttons .features ul li {
+height: 40px;
+width: 40px;
+margin: 0 5px;
+}
+
+.buttons button {
+font-size: 14px;
+padding: 10px 18px;
+}
+}
+
+.topic-buttons {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 10px;
+justify-content: center;
+margin-top: 20px;
+}
+
+.topic-button {
+background: #5372f0;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 14px;
+padding: 10px 15px;
+transition: background 0.3s ease;
+}
+
+
+.topic-button:hover {
+background: #405aa8;
+}
+
+
+@media (max-width: 768px) {
+.topic-buttons {
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 8px;
+margin-top: 10px;
+}
+
+.topic-button {
+font-size: 12px;
+padding: 8px 12px;
+}
+}
+
+.buttons button#new-quote {
+display: block;
+margin-top: 20px; /* Adjust as needed */
+}
+
+.buttons .features {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.buttons .features button#new-quote {
+margin-top: 20px; /* Adjust as needed */
+}
+
+.quote-area:hover {
+transform: scale(1.05);
+}
+
+
+.buttons button {
+transition: background 0.3s ease, transform 0.2s ease;
+}
+
+
+.buttons button:hover {
+background: #405aa8;
+transform: scale(1.05);
+}
+
+
+.features ul li:hover {
+background: #405aa8;
+transform: scale(1.2);
+}
+
+
+.topic-button {
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a transition for the topic buttons */
+.topic-button {
+transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.topic-button:hover {
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.buttons button#new-quote {
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.buttons button#new-quote {
+transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.buttons button#new-quote:hover {
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.wrapper {
+background: #f8f3eb url("path/to/your-background-pattern.jpg") repeat;
+}
+
+
+.quote-area {
+background: linear-gradient(rgba(240, 235, 223, 0.9), rgba(240, 235, 223, 0.9)),
+url("path/to/your-image.jpg") center/cover no-repeat;
+position: relative;
+overflow: hidden;
+}
+
+
+.quote-area::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: inherit;
+filter: blur(8px);
+}
+
+
+.quote-area .quote {
+color: #333;
+}
+
+.buttons button {
+border-radius: 25px;
+}
+
+.buttons button#new-quote {
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+}
+}
+
+.topic-button {
+transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.topic-button:hover {
+background: #405aa8;
+transform: scale(1.05);
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.quote-area:hover {
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.quote-area {
+transition: background 0.5s ease;
+}
+
+
+.features ul li:hover {
+background: #405aa8;
+transform: scale(1.2);
+}
+
+
+.features ul li:hover {
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh; /* Adjust as needed */
+}
+
+
+.quote-area {
+padding: 30px;
+border-radius: 15px;
+text-align: center;
+}
+a[target="_blank"] {
+rel: noopener noreferrer;
+}
+
+.quote-area::before {
+    content: none !important; /* Loại bỏ nội dung của ::before */
+    filter: none !important; /* Loại bỏ hiệu ứng mờ */
+}
+
+
+
+
+                                                          
+				
+        ]]></b:skin>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <header>Danh Ngôn Hay Mỗi Ngày</header>
+            <div class='content'>
+                <div class='quote-area'>
+                    <i class='fas fa-quote-left'/>
+                    <p class='quote'>Xin vui lòng nhấp vào nút &quot;Trích dẫn Mới&quot; để nhận một
+						Trích dẫn mới!</p>
+                    <i class='fas fa-quote-right'/>
+                </div>
+                <div class='author'>
+                    <span>__</span>
+                    <span class='name' id='author'>Đinh Khánh Tùng</span>
+                </div>
+                <div class='topic-buttons'>
+                    <button class='topic-button' data-topic='motivation'>Động lực</button>
+                    <button class='topic-button' data-topic='love'>Tình yêu</button>
+                    <button class='topic-button' data-topic='success'>Thành công</button>
+                    <button class='topic-button' data-topic='inspiration'>Gia đình</button>
+                    <button class='topic-button' data-topic='life'>Cuộc sống</button>
+                    <button class='topic-button' data-topic='happiness'>Hạnh phúc</button>
+                    <button class='topic-button' data-topic='wisdom'>Tri thức</button>
+                    <button class='topic-button' data-topic='friendship'>Tình bạn</button>
+                    <button class='topic-button' data-topic='other'>Khác</button>
+                </div>
+            </div>
+            <div class='buttons'>
+                <div class='features'>
+                    <ul>
+                        <li class='speech' id='speech'>
+                            <i class='fas fa-volume-up'/>
+                        </li>
+                        <li class='copy' id='copy'>
+                            <i class='fas fa-copy'/>
+                        </li>
+                        <li class='twitter' id='twitter'>
+                            <i class='fab fa-twitter'/>
+                        </li>
+                        <li class='facebook' id='facebook'>
+                            <i class='fab fa-facebook'/>
+                        </li>
+                        <li class='download-image' id='download-image'>
+                            <i class='fas fa-download'/>
+                        </li>
+                        <li class='favorite' id='favorite'>
+                            <i class='fas fa-heart'/>
+                        </li>
+                    </ul>
+                    <button id='new-quote'>Trích Dẫn Mới</button>
+                </div>
+            </div>
+        </div>
+        <b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='yes'/>
+        <script>
+			const text = document.querySelector(&quot;.quote&quot;);
+			const author = document.getElementById(&quot;author&quot;);
+			const tweetButton = document.querySelector(&quot;#twitter&quot;);
+			const facebookButton = document.querySelector(&quot;#facebook&quot;);
+			const darkModeSwitch = document.querySelector(&quot;#toggle-dark-mode&quot;);
+
+			const getNewQuote = async () =&gt; {
+			//api for quotes
+			var url =
+			&quot;https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json&quot;;
+
+			// fetch the data from api
+			const response = await fetch(url);
+
+			//convert response to json and store it in quotes array
+			const allQuotes = await response.json();
+
+			// Generates a random number between 0 and the length of the quotes array
+			const indx = Math.floor(Math.random() * allQuotes.length);
+
+			//Store the quote present at the randomly generated index
+			const quote = allQuotes[indx].text;
+
+			//Store the author of the respective quote
+			const auth = allQuotes[indx].author;
+
+			if (auth == null) {
+			author.innerHTML = &quot;Anonymous&quot;;
+			} else {
+			author.innerHTML = &quot;~ &quot; + auth;
+			}
+
+			//function to dynamically display the quote and the author
+			text.innerHTML = quote;
+
+			//tweet the quote
+			tweetButton.href = &quot;https://twitter.com/intent/tweet?text=&quot; +
+			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
+			encodeURIComponent(author.innerHTML);
+
+			// share on Facebook
+			facebookButton.href = &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
+			encodeURIComponent(window.location.href);
+			};
+
+			document.getElementById(&quot;new-quote&quot;).addEventListener(&quot;click&quot;,
+			getNewQuote);
+
+			tweetButton.addEventListener(&quot;click&quot;, () =&gt; {
+			window.open( &quot;https://twitter.com/intent/tweet?text=&quot; +
+			encodeURIComponent(text.innerHTML) + &quot; ~ &quot; +
+			encodeURIComponent(author.innerHTML),
+			&quot;_blank&quot;
+			);
+			});
+
+			facebookButton.addEventListener(&quot;click&quot;, () =&gt; {
+			window.open( &quot;https://www.facebook.com/sharer/sharer.php?u=&quot; +
+			encodeURIComponent(window.location.href),
+			&quot;_blank&quot;
+			);
+			});
+
+			darkModeSwitch.addEventListener(&quot;change&quot;, () =&gt; {
+			document.documentElement.classList.toggle(&quot;dark-mode&quot;,
+			darkModeSwitch.checked);
+			});
+
+			const speechButton = document.getElementById(&#39;speech&#39;);
+			speechButton.addEventListener(&#39;click&#39;, () =&gt; {
+			// Add code for handling the speech button click event (if needed)
+			alert(&#39;Speech button clicked!&#39;);
+			});
+
+			const copyButton = document.getElementById(&#39;copy&#39;);
+			copyButton.addEventListener(&#39;click&#39;, () =&gt; {
+			// Add code for handling the copy button click event (if needed)
+			alert(&#39;Copy button clicked!&#39;);
+			});
+
+			getNewQuote();
+		</script>
+    </body>
+</html>
