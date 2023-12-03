@@ -21,7 +21,7 @@ const getNewQuote = async () => {
     facebookButton.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
 };
 
-// Sự kiện click cho nút "Trích dẫn mới"
+// Sự kiện click cho nút "Trích dẫn Mới"
 document.getElementById("new-quote").addEventListener("click", getNewQuote);
 
 // Sự kiện click cho nút chia sẻ trên Twitter và Facebook
@@ -39,4 +39,10 @@ document.getElementById("new-quote").addEventListener("click", getNewQuote);
 });
 
 // Gọi hàm lấy trích dẫn mới khi tải trang
-getNewQuote();
+window.onload = function() {
+    const text = document.querySelector(".quote");
+    const author = document.getElementById("author");
+    text.innerHTML = "Xin vui lòng nhấp vào nút 'Trích dẫn Mới' để nhận một Trích dẫn mới!";
+    author.innerHTML = "~ Đinh Khánh Tùng";
+    getNewQuote();
+};
