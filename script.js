@@ -1,92 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const text = document.querySelector(".quote");
-    const author = document.getElementById("author");
-    const tweetButton = document.querySelector("#twitter");
-    const facebookButton = document.querySelector("#facebook");
-    const darkModeSwitch = document.querySelector("#toggle-dark-mode");
+// Dữ liệu trích dẫn
+const quotes = [
+    {
+        quote: "Trích dẫn mẫu 1.",
+        author: "Tác giả 1"
+    },
+    {
+        quote: "Trích dẫn mẫu 2.",
+        author: "Tác giả 2"
+    },
+    {
+        quote: "Trích dẫn mẫu 3.",
+        author: "Tác giả 3"
+    },
+    // Thêm các trích dẫn khác nếu cần
+];
 
-    const getNewQuote = async () => {
-        // API for quotes
-        const url =
-            "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
+// Chọn phần tử DOM
+const quoteText = document.querySelector(".quote");
+const authorText = document.querySelector(".author span:first-child");
+const newQuoteBtn = document.getElementById("new-quote");
 
-        // Fetch the data from the API
-        try {
-            const response = await fetch(url);
-            const allQuotes = await response.json();
+// Lấy trích dẫn ngẫu nhiên
+function getRandomQuote() {
+    return quotes[Math.floor(Math.random() * quotes.length)];
+}
 
-            // Generates a random number between 0 and the length of the quotes array
-            const indx = Math.floor(Math.random() * allQuotes.length);
+// Hiển thị trích dẫn mới
+function displayQuote() {
+    const { quote, author } = getRandomQuote();
+    quoteText.textContent = quote;
+    authorText.textContent = author;
+}
 
-            // Store the quote present at the randomly generated index
-            const quote = allQuotes[indx].text;
+// Sự kiện nút Trích dẫn mới
+newQuoteBtn.addEventListener("click", displayQuote);
 
-            // Store the author of the respective quote
-            const auth = allQuotes[indx].author;
-
-            if (auth == null) {
-                author.innerHTML = "Anonymous";
-            } else {
-                author.innerHTML = "~ " + auth;
-            }
-
-            // Function to dynamically display the quote and the author
-            text.innerHTML = quote;
-
-            // Tweet the quote
-            tweetButton.href =
-                "https://twitter.com/intent/tweet?text=" +
-                encodeURIComponent(text.innerHTML) +
-                " ~ " +
-                encodeURIComponent(author.innerHTML);
-
-            // Share on Facebook
-            facebookButton.href =
-                "https://www.facebook.com/sharer/sharer.php?u=" +
-                encodeURIComponent(window.location.href);
-        } catch (error) {
-            console.error("Error fetching new quote:", error);
-        }
-    };
-
-    document.getElementById("new-quote").addEventListener("click", getNewQuote);
-
-    tweetButton.addEventListener("click", () => {
-        window.open(
-            "https://twitter.com/intent/tweet?text=" +
-                encodeURIComponent(text.innerHTML) +
-                " ~ " +
-                encodeURIComponent(author.innerHTML),
-            "_blank"
-        );
-    });
-
-    facebookButton.addEventListener("click", () => {
-        window.open(
-            "https://www.facebook.com/sharer/sharer.php?u=" +
-                encodeURIComponent(window.location.href),
-            "_blank"
-        );
-    });
-
-    darkModeSwitch.addEventListener("change", () => {
-        document.documentElement.classList.toggle(
-            "dark-mode",
-            darkModeSwitch.checked
-        );
-    });
-
-    const speechButton = document.getElementById("speech");
-    speechButton.addEventListener("click", () => {
-        // Add code for handling the speech button click event (if needed)
-        alert("Speech button clicked!");
-    });
-
-    const copyButton = document.getElementById("copy");
-    copyButton.addEventListener("click", () => {
-        // Add code for handling the copy button click event (if needed)
-        alert("Copy button clicked!");
-    });
-
-    getNewQuote();
-});
+// Hiển thị trích dẫn ban đầu
+displayQuote();
