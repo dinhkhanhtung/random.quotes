@@ -7,22 +7,15 @@
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0 10px;
     background: #f9f6f2;
     font-family: "Poppins", sans-serif;
 }
 
 .wrapper {
-    max-width: 100%;
     background: #f8f3eb;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -38,13 +31,9 @@ header {
 }
 
 .quote-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background: #f0ebdf;
     padding: 20px;
     border-radius: 10px;
-    position: relative;
     text-align: center;
     margin-top: 20px;
 }
@@ -63,26 +52,7 @@ header {
     z-index: 1;
 }
 
-.quote-area::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #d3cbc3;
-    border-radius: 10px;
-    z-index: 0;
-    transition: box-shadow 0.3s ease;
-}
-
-.quote-area:hover::before,
-.wrapper:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
 .author {
-    display: flex;
     font-size: 14px;
     margin-top: 10px;
     font-style: italic;
@@ -96,7 +66,6 @@ header {
 }
 
 .buttons {
-    border-top: 1px solid #ccc;
     margin-top: 20px;
 }
 
