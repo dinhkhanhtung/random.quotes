@@ -37,3 +37,17 @@ newQuoteBtn.addEventListener("click", displayQuote);
 
 // Hiển thị trích dẫn ban đầu
 displayQuote();
+// Trong hàm displayQuote()
+function displayQuote() {
+    const { quote, author } = getRandomQuote();
+    console.log("Displaying new quote:", quote, author);
+    quoteText.textContent = quote;
+    authorText.textContent = author;
+}
+
+// Trong sự kiện click nút
+newQuoteBtn.addEventListener("click", () => {
+    console.log("New quote button clicked");
+    displayQuote();
+});
+
