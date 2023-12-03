@@ -44,13 +44,19 @@ const getNewQuote = async () => {
     tweetButton.href = "https://twitter.com/intent/tweet?text=" +
         encodeURIComponent(quoteText.textContent) + " ~ " +
         encodeURIComponent(authorText.textContent);
-  
+
+    // Check if the quote is in the favorites list
+    var favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+    var isFavorite = favoriteQuotes.some(function(favoriteQuote) {
+        return favoriteQuote.quote === quote && favoriteQuote.author === auth;
+    });
+
+    // Update the color of the favorite button
+    favoriteButton.style.color = isFavorite ? "red" : "";
+
     // share on Facebook
     facebookButton.href = "https://www.facebook.com/sharer/sharer.php?u=" +
         encodeURIComponent(window.location.href);
-
-    // Đặt lại màu của nút yêu thích
-    favoriteButton.style.color = "";
 };
 
 // Thêm sự kiện cho nút copy
@@ -90,9 +96,23 @@ favoriteButton.addEventListener('click', function() {
     var favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
     var quote = quoteText.textContent;
     var author = authorText.textContent;
-    favoriteQuotes.push({quote, author});
+
+    // Check if the quote is already in the favorites list
+    var index = favoriteQuotes.findIndex(function(favoriteQuote) {
+        return favoriteQuote.quote === quote && favoriteQuote.author === author;
+    });
+
+    if (index === -1) {
+        // If it's not in the favorites list, add it
+        favoriteQuotes.push({quote, author});
+        favoriteButton.style.color = "red";
+    } else {
+        // If it's already in the favorites list, remove it
+        favoriteQuotes.splice(index, 1);
+        favoriteButton.style.color = "";
+    }
+
     localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
-    favoriteButton.style.color = "red";
 });
 
 // Thêm sự kiện cho nút tải xuống
