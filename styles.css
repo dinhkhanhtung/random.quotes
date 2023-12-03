@@ -71,16 +71,15 @@ body {
     }
 
     .topic-buttons {
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 8px;
-        margin-top: 10px;
+        display: none;
     }
 
     .topic-button {
-        font-size: 12px;
-        padding: 8px 12px;
+        display: none;
     }
 }
+
+/* Rest of your CSS code */
 
 /* Rest of your CSS code */
 
