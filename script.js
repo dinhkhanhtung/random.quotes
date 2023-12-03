@@ -3,6 +3,7 @@ const text = document.querySelector(".quote");
 const author = document.getElementById("author");
 const tweetButton = document.querySelector("#twitter");
 const facebookButton = document.querySelector("#facebook");
+const darkModeSwitch = document.querySelector("#toggle-dark-mode");
 
 // Hàm lấy trích dẫn mới từ API
 const getNewQuote = async () => {
