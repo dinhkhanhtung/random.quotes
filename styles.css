@@ -368,3 +368,27 @@ ul .speech.active {
 .features ul li:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+/* ... (các luật CSS trước đó) */
+
+body {
+  overflow: hidden; /* Ẩn thanh cuộn trang */
+}
+
+.wrapper {
+  max-width: 100%;
+  width: 100%;
+  background: #f8f3eb;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: auto; /* Hiển thị thanh cuộn nếu nội dung vượt quá chiều cao của wrapper */
+}
+
+/* ... (các luật CSS tiếp theo) */
