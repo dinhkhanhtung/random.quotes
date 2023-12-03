@@ -1,394 +1,254 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap") font-display: swap;
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 0 10px;
-  background: #f9f6f2;
-  font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins */
+    background-color: #f5f5dc; /* Màu giấy cũ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .wrapper {
-  max-width: 100%;
-  width: 100%;
-  background: #f8f3eb;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    max-width: 500px;
+    width: 100%;
+    background: #f5f5dc; /* Màu giấy cũ */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
 }
 
 header {
-  font-size: 26px;
-  font-weight: 600;
-  text-align: center;
-  color: #202842;
+    font-size: 18px; /* Giảm kích thước chữ cho tiêu đề */
+    font-weight: 600;
+    text-align: center;
+    color: #696969; /* Màu đen nhạt */
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #f5f5dc; /* Màu nền cho tiêu đề */
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .quote-area {
-  display: flex;
-  justify-content: center;
-  background: #f0ebdf;
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    background: #f5f5dc; /* Màu giấy cũ */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .quote-area i {
-  font-size: 15px;
-  color: #202842;
+    font-size: 24px;
+    color: #696969; /* Màu đen nhạt */
 }
 
 .quote-area i:first-child {
-  margin: 3px 10px 0 0;
+    margin: 3px 10px 0 0;
 }
 
 .quote-area i:last-child {
-  display: flex;
-  margin: 0 0 3px 10px;
-  align-items: flex-end;
+    display: flex;
+    margin: 0 0 3px 10px;
+    align-items: flex-end;
 }
 
 .quote-area .quote {
-  font-size: 18px;
-  word-break: break-word;
-  white-space: pre-line;
-  max-width: 100%;
-  z-index: 1;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #696969; /* Màu đen nhạt */
+    max-width: 100%;
+    z-index: 1;
 }
 
 .quote-area::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid #d3cbc3;
-  border-radius: 10px;
-  z-index: 0;
-  transition: box-shadow 0.3s ease;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    z-index: 0;
+    transition: box-shadow 0.3s ease;
 }
 
 .quote-area:hover::before,
 .wrapper:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .author {
-  display: flex;
-  font-size: 18px;
-  margin-top: 20px;
-  font-style: italic;
-  justify-content: flex-end;
-  color: #202842;
+    display: flex;
+    font-size: 16px;
+    font-style: italic;
+    justify-content: flex-end;
+    color: #555;
+    margin-top: 15px;
 }
 
 .author span:first-child {
-  margin: -6px 5px 0 0;
-  font-family: monospace;
+    margin: -6px 5px 0 0;
+    font-family: monospace;
 }
 
 .buttons {
-  border-top: 1px solid #ccc;
+    border-top: 1px solid #696969; /* Màu đen nhạt */
+    margin-top: 20px; /* Tăng khoảng cách giữa nút và trích dẫn */
+    padding-top: 20px;
 }
 
 .buttons .features {
-  display: flex;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .features ul {
-  display: flex;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center; /* Căn giữa hàng nút chức năng */
 }
 
 .features ul li {
-  margin: 0 10px;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  cursor: pointer;
-  color: #5372f0;
-  list-style: none;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #5372f0;
-  transition: all 0.3s ease;
+    margin: 0 10px;
+    height: 50px; /* Tăng kích thước nút chức năng */
+    width: 50px; /* Tăng kích thước nút chức năng */
+    display: flex;
+    cursor: pointer;
+    color: #696969; /* Màu đen nhạt */
+    list-style: none;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #696969; /* Màu đen nhạt */
+    transition: all 0.3s ease;
 }
 
 ul li:hover,
 ul li.active {
-  color: #fff;
-  background: #5372f0;
+    color: #fff;
+    background: #696969; /* Màu đen nhạt */
 }
 
 ul .speech.active {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .buttons button {
-  border: none;
-  color: #fff;
-  outline: none;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 13px 22px;
-  border-radius: 30px;
-  background: #5372f0;
-  transition: background 0.3s ease;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-size: 18px; /* Kích thước chữ giống tiêu đề */
+    cursor: pointer;
+    padding: 13px 22px;
+    border-radius: 30px;
+    background: #696969; /* Màu đen nhạt */
+    transition: background 0.3s ease;
+    margin: auto; /* Căn giữa nút */
+    display: block; /* Đặt nút thành block để margin:auto hoạt động */
 }
 
 .buttons button.loading {
-  opacity: 0.7;
-  pointer-events: none;
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .dark-mode .wrapper {
-  background: #1a1a1a;
-  color: #fff;
+    background: #333;
+    color: #fff;
 }
 
 .dark-mode .quote-area {
-  background: #2d2d2d;
-  border: 1px solid #444;
+    background: #222;
+    border: 1px solid #444;
 }
 
 .dark-mode .quote-area i {
-  color: #fff;
+    color: #fff;
 }
 
 .dark-mode .quote-area .quote {
-  color: #fff;
+    color: #fff;
 }
 
 @media (max-width: 768px) {
-  .wrapper {
-    padding: 20px;
-  }
+    .wrapper {
+        padding: 20px;
+    }
 
-  .wrapper header {
-    font-size: 24px;
-  }
+    .wrapper header {
+        font-size: 20px; /* Giảm kích thước chữ cho tiêu đề */
+    }
 
-  .quote-area {
-    padding: 15px;
-  }
+    .quote-area {
+        padding: 15px;
+    }
 
-  .quote-area i {
-    font-size: 12px;
-  }
+    .quote-area i {
+        font-size: 20px;
+    }
 
-  .quote-area .quote {
-    font-size: 18px;
-  }
+    .quote-area .quote {
+        font-size: 18px; /* Tăng kích thước chữ cho trích dẫn */
+    }
 
-  .content .author {
-    font-size: 14px;
-  }
+    .content .author {
+        font-size: 16px; /* Tăng kích thước chữ cho tác giả */
+    }
 
-  .buttons .features ul li {
-    height: 30px;
-    width: 30px;
-    margin: 0 5px;
-  }
+    .buttons .features ul li {
+        height: 30px;
+        width: 30px;
+        margin: 0 5px;
+    }
 
-  .buttons button {
-    font-size: 14px;
-    padding: 10px 18px;
-  }
-}
+    .buttons button {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
 
-.topic-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.topic-button {
-  background: #5372f0;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 10px 15px;
-  transition: background 0.3s ease;
-}
-
-.topic-button:hover {
-  background: #405aa8;
+    .buttons .features {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .buttons button#new-quote {
-  display: block;
-  margin-top: 20px;
-}
-
-.buttons .features {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.buttons .features button#new-quote {
-  margin-top: 20px;
-}
-
-.quote-area:hover {
-  transform: scale(1.05);
-}
-
-.buttons button {
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.buttons button:hover {
-  background: #405aa8;
-  transform: scale(1.05);
-}
-
-.features ul li:hover {
-  background: #405aa8;
-  transform: scale(1.2);
-}
-
-.topic-button {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.topic-button {
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.topic-button:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.buttons button#new-quote {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.buttons button#new-quote {
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    align-self: flex-end;
+    animation: pulse 2s infinite;
 }
 
 .buttons button#new-quote:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.wrapper {
-  background: #f8f3eb url("path/to/your-background-pattern.jpg") repeat;
-}
-
-.quote-area {
-  background: linear-gradient(rgba(240, 235, 223, 0.9), rgba(240, 235, 223, 0.9)),
-    url("path/to/your-image.jpg") center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-.quote-area::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit;
-  filter: blur(8px);
-}
-
-.quote-area .quote {
-  color: #333;
-}
-
-.buttons button {
-  border-radius: 25px;
-}
-
-.buttons button#new-quote {
-  animation: pulse 2s infinite;
+    transform: scale(1.1);
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
-
-.topic-button {
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.topic-button:hover {
-  background: #405aa8;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.quote-area:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.quote-area {
-  transition: background 0.5s ease;
-}
-
-.features ul li:hover {
-  background: #405aa8;
-  transform: scale(1.2);
-}
-
-.features ul li:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* ... (các luật CSS trước đó) */
-
-body {
-  overflow: hidden; /* Ẩn thanh cuộn trang */
-}
-
-.wrapper {
-  max-width: 100%;
-  width: 100%;
-  background: #f8f3eb;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow-y: auto; /* Hiển thị thanh cuộn nếu nội dung vượt quá chiều cao của wrapper */
-}
-
-/* ... (các luật CSS tiếp theo) */
