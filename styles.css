@@ -4,200 +4,14 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins */
-    background-color: #f5f5dc; /* Màu giấy cũ */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-.wrapper {
-    max-width: 500px;
+body, html {
     width: 100%;
-    background: #f5f5dc; /* Màu giấy cũ */
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-}
-
-.avatar {
-    border-radius: 50%; /* Làm cho ảnh tròn */
-    width: 150px; /* Đặt chiều rộng của ảnh */
-    height: 150px; /* Đặt chiều cao của ảnh */
-    object-fit: cover; /* Đảm bảo ảnh luôn nằm trong khung, không bị méo */
-    margin-bottom: 15px; /* Tạo khoảng cách giữa ảnh và tiêu đề */
-}
-
-.quote-area {
-    display: flex;
-    justify-content: center;
-    background: #f5f5dc; /* Màu giấy cũ */
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.quote-area i {
-    font-size: 24px;
-    color: #696969; /* Màu đen nhạt */
-}
-
-.quote-area i:first-child {
-    margin: 3px 10px 0 0;
-}
-
-.quote-area i:last-child {
-    display: flex;
-    margin: 0 0 3px 10px;
-    align-items: flex-end;
-}
-
-.quote-area .quote {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #696969; /* Màu đen nhạt */
-    max-width: 100%;
-    z-index: 1;
-}
-
-.quote-area::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #222;
-    border-radius: 10px;
-    z-index: 0;
-    transition: box-shadow 0.3s ease;
-}
-
-.quote-area:hover::before,
-.wrapper:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.author {
-    display: flex;
-    font-size: 16px;
-    font-style: italic;
-    justify-content: flex-end;
-    color: #555;
-    margin-top: 15px;
-}
-
-.author span:first-child {
-    margin: -6px 5px 0 0;
-    font-family: monospace;
-}
-
-.buttons {
-    border-top: 1px solid #696969; /* Màu đen nhạt */
-    margin-top: 20px; /* Tăng khoảng cách giữa nút và trích dẫn */
-    padding-top: 20px;
-}
-
-.buttons .features {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.features ul {
-    display: flex;
-    margin-bottom: 10px;
-    justify-content: center; /* Căn giữa hàng nút chức năng */
-}
-
-.features ul li {
-    margin: 0 10px;
-    height: 50px; /* Tăng kích thước nút chức năng */
-    width: 50px; /* Tăng kích thước nút chức năng */
-    display: flex;
-    cursor: pointer;
-    color: #696969; /* Màu đen nhạt */
-    list-style: none;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #696969; /* Màu đen nhạt */
-    transition: all 0.3s ease;
-}
-
-ul li:hover,
-ul li.active {
-    color: #fff;
-    background: #696969; /* Màu đen nhạt */
-}
-
-ul .speech.active {
-    pointer-events: none;
-}
-
-.buttons button {
-    border: none;
-    color: #fff;
-    outline: none;
-    font-size: 18px; /* Kích thước chữ giống tiêu đề */
-    cursor: pointer;
-    padding: 13px 22px;
-    border-radius: 30px;
-    background: #696969; /* Màu đen nhạt */
-    transition: background 0.3s ease;
-    margin: auto; /* Căn giữa nút */
-    display: block; /* Đặt nút thành block để margin:auto hoạt động */
-}
-
-.buttons button.loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-.dark-mode .wrapper {
-    background: #333;
-    color: #fff;
-}
-
-.dark-mode .quote-area {
-    background: #222;
-    border: 1px solid #444;
-}
-
-.dark-mode .quote-area i {
-    color: #fff;
-}
-
-.dark-mode .quote-area .quote {
-    color: #fff;
-}
-
-* {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5f5dc;
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    margin: 0;
+    align-items: center;
 }
 
 .wrapper {
@@ -208,12 +22,10 @@ body {
     padding: 30px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
 }
 
 .avatar {
