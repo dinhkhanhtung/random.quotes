@@ -1,40 +1,46 @@
-// Dữ liệu trích dẫn
-const quotes = [
-    {
-        quote: "Trích dẫn mẫu 1.",
-        author: "Tác giả 1"
-    },
-    {
-        quote: "Trích dẫn mẫu 2.",
-        author: "Tác giả 2"
-    },
-    {
-        quote: "Trích dẫn mẫu 3.",
-        author: "Tác giả 3"
-    },
-    // Thêm các trích dẫn khác nếu cần
-];
-
-// Chọn phần tử DOM
-const quoteText = document.querySelector(".quote");
-const authorText = document.querySelector(".author span:first-child");
+const quoteText = document.getElementById("quote-text");
+const authorText = document.getElementById("author-text");
 const newQuoteBtn = document.getElementById("new-quote");
 
-// Lấy trích dẫn ngẫu nhiên
+// Hàm lấy một trích dẫn ngẫu nhiên (hãy đảm bảo bạn đã triển khai nó)
 function getRandomQuote() {
-    return quotes[Math.floor(Math.random() * quotes.length)];
+    // Thay thế hàm này với logic lấy trích dẫn ngẫu nhiên của bạn
+    return { quote: "Sample Quote", author: "Author" };
 }
 
-// Hiển thị trích dẫn mới
+// Hàm hiển thị trích dẫn mới
 function displayQuote() {
     const { quote, author } = getRandomQuote();
     quoteText.textContent = quote;
-    authorText.textContent = author;
+    authorText.textContent = `— ${author}`;
 }
 
-// Sự kiện nút Trích dẫn mới
+// Xử lý sự kiện click nút "Trích Dẫn Mới"
 newQuoteBtn.addEventListener("click", displayQuote);
 
-// Hiển thị trích dẫn ban đầu
+// Gọi hàm hiển thị trích dẫn lần đầu tiên khi trang được tải
 displayQuote();
+document.addEventListener("DOMContentLoaded", function () {
+    const quoteText = document.getElementById("quote-text");
+    const authorText = document.getElementById("author-text");
+    const newQuoteBtn = document.getElementById("new-quote");
 
+    // Hàm lấy một trích dẫn ngẫu nhiên (hãy đảm bảo bạn đã triển khai nó)
+    function getRandomQuote() {
+        // Thay thế hàm này với logic lấy trích dẫn ngẫu nhiên của bạn
+        return { quote: "Sample Quote", author: "Author" };
+    }
+
+    // Hàm hiển thị trích dẫn mới
+    function displayQuote() {
+        const { quote, author } = getRandomQuote();
+        quoteText.textContent = quote;
+        authorText.textContent = `— ${author}`;
+    }
+
+    // Xử lý sự kiện click nút "Trích Dẫn Mới"
+    newQuoteBtn.addEventListener("click", displayQuote);
+
+    // Gọi hàm hiển thị trích dẫn lần đầu tiên khi trang được tải
+    displayQuote();
+});
