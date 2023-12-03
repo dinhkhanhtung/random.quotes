@@ -30,16 +30,12 @@ body {
     height: 80vh;
 }
 
-header {
-    font-size: 18px; /* Giảm kích thước chữ cho tiêu đề */
-    font-weight: 600;
-    text-align: center;
-    color: #696969; /* Màu đen nhạt */
-    margin-bottom: 20px;
-    position: relative;
-    background-color: #f5f5dc; /* Màu nền cho tiêu đề */
-    padding: 10px;
-    border-radius: 5px;
+.avatar {
+    border-radius: 50%; /* Làm cho ảnh tròn */
+    width: 150px; /* Đặt chiều rộng của ảnh */
+    height: 150px; /* Đặt chiều cao của ảnh */
+    object-fit: cover; /* Đảm bảo ảnh luôn nằm trong khung, không bị méo */
+    margin-bottom: 15px; /* Tạo khoảng cách giữa ảnh và tiêu đề */
 }
 
 .quote-area {
@@ -193,8 +189,9 @@ ul .speech.active {
         padding: 20px;
     }
 
-    .wrapper header {
-        font-size: 20px; /* Giảm kích thước chữ cho tiêu đề */
+    .avatar {
+        width: 100px; /* Giảm kích thước ảnh trên thiết bị di động */
+        height: 100px; /* Giảm kích thước ảnh trên thiết bị di động */
     }
 
     .quote-area {
@@ -202,7 +199,7 @@ ul .speech.active {
     }
 
     .quote-area i {
-        font-size: 20px;
+        color: #fff;
     }
 
     .quote-area .quote {
