@@ -17,8 +17,7 @@ body {
 }
 
 .wrapper {
-    max-width: 605px;
-    width: 100%;
+    max-width: 100%;
     background: #f8f3eb;
     border-radius: 15px;
     padding: 30px;
@@ -29,7 +28,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
 }
 
 header {
@@ -243,21 +242,13 @@ header {
     transform: scale(1.05);
 }
 
-.buttons button {
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.buttons button:hover {
+.buttons button,
+.features ul li:hover {
     background: #405aa8;
     transform: scale(1.05);
 }
 
-.features ul li:hover,
-.features ul li.active {
-    color: #fff;
-    background: #5372f0;
-}
-
-.features ul .speech.active {
-    pointer-events: none;
+.buttons button,
+.features ul li {
+    transition: background 0.3s ease, transform 0.2s ease;
 }
