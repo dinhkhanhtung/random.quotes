@@ -1,3 +1,5 @@
+// Your JavaScript code from the original file
+// Make sure to include any other JavaScript code you have
 const text = document.querySelector(&quot;.quote&quot;);
 			const author = document.getElementById(&quot;author&quot;);
 			const tweetButton = document.querySelector(&quot;#twitter&quot;);
