@@ -9,6 +9,8 @@ var quoteText = document.querySelector(".quote");
 var authorText = document.getElementById("author");
 var newQuoteButton = document.getElementById('new-quote');
 
+var isSpeaking = false; // Biến để theo dõi trạng thái của việc phát âm thanh
+
 // Hàm lấy trích dẫn mới
 const getNewQuote = async () => {
     //api for quotes
@@ -70,7 +72,16 @@ speechButton.addEventListener('click', function() {
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
-    window.speechSynthesis.speak(speech);
+
+    if (isSpeaking) {
+        // Nếu đang phát âm thanh, hãy dừng lại
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+    } else {
+        // Nếu không, hãy bắt đầu phát âm thanh
+        window.speechSynthesis.speak(speech);
+        isSpeaking = true;
+    }
 });
 
 // Thêm sự kiện cho nút yêu thích
