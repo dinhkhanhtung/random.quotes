@@ -14,7 +14,7 @@ var isSpeaking = false; // Biến để theo dõi trạng thái của việc ph�
 // Hàm lấy trích dẫn mới
 const getNewQuote = async () => {
     //api for quotes
-    var url = "https://raw.githubusercontent.com/dinhkhanhtung/dkt/main/new-quotes.json";
+    var url = "https://raw.githubusercontent.com/dinhkhanhtung/random.quotes/main/new-quotes.json";
 
     // fetch the data from api
     const response = await fetch(url);
